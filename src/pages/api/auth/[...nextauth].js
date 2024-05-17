@@ -11,6 +11,7 @@ export const authOptions = {
     })
     // Add more providers here if needed
   ],
+  secret: process.env.SECRET,
   callbacks:{
     async signIn({user,account}){
       if(account.provider === 'google'){
