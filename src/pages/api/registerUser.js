@@ -14,11 +14,11 @@ export default async function handler(req, res) {
       await User.create({ name, email });
 
       // Return success response
-      res.status(201).json({ status: 201, message: "User registered" });
+      res.json({ status: 201, message: "User registered" });
     } catch (error) {
       // Return error response
       console.error(error);
-      res.status(500).json({ status: 500, message: "Internal server error" });
+      res.json({ status: 500, message: "Internal server error" });
     }
   } else {
     // Return method not allowed response for other HTTP methods
