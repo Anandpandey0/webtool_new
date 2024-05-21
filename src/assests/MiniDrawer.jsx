@@ -20,11 +20,15 @@ import PeopleIcon from '@mui/icons-material/People';
 import MailIcon from '@mui/icons-material/Mail';
 import TaskIcon from '@mui/icons-material/Task';
 import PeopleDashboard from '../components/PeopleDashboard';
+import { signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 
 const PeopleContent = () => <PeopleDashboard/>
 const MailContent = () => <div>Mail content...</div>;
 const TaskContent = () => <div>Task content...</div>;
+const AccountInfo = () => <button  onClick={()=>signOut()}>Sign Out</button>;
+
 
 const drawerWidth = 240;
 
@@ -94,6 +98,13 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function MiniDrawer() {
+  const {data:session}= useSession();
+  const router = useRouter()
+  React.useEffect(()=>{
+    if(!session){
+      router.push('/signin')
+  }
+  },[session,router])
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [selectedMenu, setSelectedMenu] = React.useState('People'); // Default selected menu item
@@ -113,7 +124,9 @@ export default function MiniDrawer() {
   const menuItems = [
     { text: 'People', icon: <PeopleIcon />, component: <PeopleContent /> },
     { text: 'Mail', icon: <MailIcon />, component: <MailContent /> },
-    { text: 'Task', icon: <TaskIcon />, component: <TaskContent /> }
+    { text: 'Task', icon: <TaskIcon />, component: <TaskContent /> },
+    { text: 'Account ', icon: <TaskIcon />, component: <AccountInfo /> },
+  
     // Add more menu items as needed in this format
     // { text: 'AnotherItem', icon: <AnotherIcon />, component: <AnotherContent /> },
   ];
@@ -172,6 +185,7 @@ export default function MiniDrawer() {
               </ListItemButton>
             </ListItem>
           ))}
+        
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
@@ -185,6 +199,7 @@ export default function MiniDrawer() {
                 )
             )}
         </Typography>
+        
       </Box>
     </Box>
   );

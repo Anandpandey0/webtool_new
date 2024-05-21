@@ -5,8 +5,9 @@ import { useRouter } from 'next/router';
 
 
 const Links = () => {
-  const {data:session} = useSession()
+ 
   const router = useRouter()
+  const{data:session} = useSession()
   
   return (
     <div className='flex flex-col'>
