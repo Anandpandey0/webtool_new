@@ -14,10 +14,10 @@ const Links = () => {
     <Link href='/admin'>Admin</Link>
 {session ?  <>
         Signed in as {session.user.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
+        {/* <Link href='/admin'>Sign out</Link> */}
         <button onClick={() => router.push('/admin')}>Admin Dashboard</button>
       </>:<> Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
+      <Link href='/signin'>Sign in</Link>
 </>}
     </div>
   )
