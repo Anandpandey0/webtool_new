@@ -1,14 +1,14 @@
 
 import { connectSampleMongoDB } from "@/lib/mongodbSame";
-import { bhoomiscore } from "@/data/bhoomiscore";
-import BhoomiScore from "@/Models/bhoomiscore";
-
+import { villageData } from "@/data/villages";
+import Village from "@/Models/village";
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
       // Parse the request body
       await connectSampleMongoDB();
-      const insertData = await BhoomiScore.insertMany(bhoomiscore);
+
+      const insertData = await Village.insertMany(villageData);
       res.status(200).json({success:true,data:insertData})
  
     } catch (error) {
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     try {
       // Parse the request body
       await connectSampleMongoDB();
-      const insertData = await Farmers.find();
+      const insertData = await Village.find();
       res.status(200).json({success:true,data:insertData})
   }
   catch(error){

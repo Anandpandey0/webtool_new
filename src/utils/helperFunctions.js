@@ -6,4 +6,6 @@ export default function formatDate(timestamp)  {
     return `${day}/${month}/${year}`;
   };
   
- 
+  export  function firstCharToLowerCase(str) {
+    return str.charAt(0).toLowerCase() + str.slice(1);
+  }
