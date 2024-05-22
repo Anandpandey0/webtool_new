@@ -10,16 +10,14 @@ const Links = () => {
   const{data:session} = useSession()
   
   return (
-    <div className='flex flex-col'>
-    <Link href='/admin'>Admin</Link>
-{session ?  <>
-        Signed in as {session.user.email} <br />
-        {/* <Link href='/admin'>Sign out</Link> */}
-        <button onClick={() => router.push('/admin')}>Admin Dashboard</button>
-      </>:<> Not signed in <br />
-      <Link href='/signin'>Sign in</Link>
-</>}
-    </div>
+  <div className='flex gap-4'>
+  <Link href='/'>Home</Link>
+  <Link href='/farmer_details'>Farmer Details</Link>
+  <Link href='/field_details'>Field Details</Link>
+  <Link href='/super_admin'>Super Admin</Link>
+  
+  
+  </div>
   )
 }
 

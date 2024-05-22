@@ -124,6 +124,7 @@ function EnhancedTable() {
                 <TableCell>Email</TableCell>
                 <TableCell>Created At</TableCell>
                 <TableCell>Updated At</TableCell>
+                <TableCell>Admin </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

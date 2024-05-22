@@ -22,11 +22,14 @@ import TaskIcon from '@mui/icons-material/Task';
 import PeopleDashboard from '../components/PeopleDashboard';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import Links from '@/components/Links';
+import TabIcon from '@mui/icons-material/Tab';
 
 
 const PeopleContent = () => <PeopleDashboard/>
 const MailContent = () => <div>Mail content...</div>;
 const TaskContent = () => <div>Task content...</div>;
+const Tabs = () => <Links/>
 const AccountInfo = () => <button  onClick={()=>signOut()}>Sign Out</button>;
 
 
@@ -126,6 +129,7 @@ export default function MiniDrawer() {
     { text: 'Mail', icon: <MailIcon />, component: <MailContent /> },
     { text: 'Task', icon: <TaskIcon />, component: <TaskContent /> },
     { text: 'Account ', icon: <TaskIcon />, component: <AccountInfo /> },
+    { text: 'Tabs ', icon: <TabIcon />, component: <Tabs /> },
   
     // Add more menu items as needed in this format
     // { text: 'AnotherItem', icon: <AnotherIcon />, component: <AnotherContent /> },
@@ -149,7 +153,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+         Admin Dashboard
           </Typography>
         </Toolbar>
       </AppBar>

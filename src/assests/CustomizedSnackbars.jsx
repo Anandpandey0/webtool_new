@@ -1,24 +1,16 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
-export default function CustomizedSnackbars({open}) {
+export default function CustomizedSnackbars({ open }) {
   const [openToast, setOpenToast] = React.useState(open);
 
-
-  // const handleClick = () => {
-  //   setOpen(true);
-  // };
-
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
-    setOpenToast(false)
-
-
-    
+    setOpenToast(false);
   };
 
   return (
@@ -29,7 +21,7 @@ export default function CustomizedSnackbars({open}) {
           onClose={handleClose}
           severity="success"
           variant="filled"
-          sx={{ width: '100%' }}
+          sx={{ width: "100%" }}
         >
           Login Successfull
         </Alert>

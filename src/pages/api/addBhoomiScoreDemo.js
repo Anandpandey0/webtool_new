@@ -1,7 +1,7 @@
 
 import { connectSampleMongoDB } from "@/lib/mongodbSame";
 import { bhoomiscore } from "@/data/bhoomiscore";
-import BhoomiScore from "@/Models/bhoomiscore";
+import BhoomiScore from "@/models/bhoomiscore";
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
