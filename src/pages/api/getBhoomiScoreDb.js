@@ -1,4 +1,4 @@
-import BhoomiScore from "@/Models/bhoomiscore";
+import BhoomiScore from "@/models/bhoomiscore";
 // import { connectMongoDB } from "@/lib/mongodb";
 import { connectSampleMongoDB } from "@/lib/mongodbSame";
 

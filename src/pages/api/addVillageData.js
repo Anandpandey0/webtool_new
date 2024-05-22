@@ -1,7 +1,7 @@
 
 import { connectSampleMongoDB } from "@/lib/mongodbSame";
 import { villageData } from "@/data/villages";
-import Village from "@/Models/village";
+import Village from "@/models/village";
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
