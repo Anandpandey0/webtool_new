@@ -1,5 +1,5 @@
 import BhoomiScore from "@/models/bhoomiscore";
-// import { connectMongoDB } from "@/lib/mongodb";
+
 import { connectSampleMongoDB } from "@/lib/mongodbSame";
 
 export default async function handler(req, res) {
