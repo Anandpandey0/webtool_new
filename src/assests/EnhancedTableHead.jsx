@@ -22,8 +22,8 @@ import { visuallyHidden } from '@mui/utils';
 import handler from '@/pages/api/getUserDB';
 import formatDate from '@/utils/helperFunctions';
 
-function createData(id, name, email, createdAt, updatedAt) {
-  return { id, name, email, createdAt, updatedAt };
+function createData(id, name, email, createdAt, updatedAt,isAdmin) {
+  return { id, name, email, createdAt, updatedAt ,isAdmin};
 }
 
 function EnhancedTable() {
@@ -50,7 +50,8 @@ function EnhancedTable() {
                 user.name,
                 user.email,
                 user.createdAt = formatDate(user.createdAt),
-                user.updatedAt = formatDate(user.updatedAt)
+                user.updatedAt = formatDate(user.updatedAt),
+                user.isAdmin
               )
             )
           );
@@ -156,6 +157,8 @@ function EnhancedTable() {
                       <TableCell>{row.email}</TableCell>
                       <TableCell>{row.createdAt}</TableCell>
                       <TableCell>{row.updatedAt}</TableCell>
+                      <TableCell>{row.isAdmin}</TableCell>
+
                     </TableRow>
                   );
                 })}

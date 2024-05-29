@@ -9,3 +9,16 @@ export default function formatDate(timestamp)  {
   export  function firstCharToLowerCase(str) {
     return str.charAt(0).toLowerCase() + str.slice(1);
   }
+
+
+  export const fetchData = async () => {
+    try {
+      const response = await axios.get('your_geojson_file_url');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching GeoJSON data: ', error);
+    }
+  };
+
+
+  
