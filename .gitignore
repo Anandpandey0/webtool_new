@@ -7,7 +7,7 @@
 .yarn/install-state.gz
 .next/
 data/*.geojson
-
+/node_modules/
 # testing
 /coverage
 

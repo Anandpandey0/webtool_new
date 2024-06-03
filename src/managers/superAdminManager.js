@@ -1,10 +1,46 @@
-const AdminManager = require("./adminManager");
+import AdminManager from './adminManager';
+import SuperAdminUser from '../models/SuperAdminUser';
+import User from '../models/User'
+import bcrypt from 'bcryptjs';
 
 class SuperAdminManager extends AdminManager {
   constructor() {
     super();
   }
-  //Super Admin will get to see everything UsersDb have
+
+  async registerSuperAdmin(username, email, password) {
+    try {
+      if (!email || !password || !username) {
+        return {
+          success: false,
+          message: "Missing required data",
+        };
+      }
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      const superAdmin = new SuperAdminUser({
+        email,
+        password: hashedPassword,
+        username,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+
+      await superAdmin.save();
+
+      return {
+        success: true,
+        message: "Super admin registered successfully",
+      };
+    } catch (error) {
+      console.error(new Error(error));
+      return {
+        success: false,
+        message: `Error registering super admin: ${error.message}`,
+      };
+    }
+  }
+
   async getSuperAdminDashboard() {
     try {
       const userDB = await User.find();
@@ -17,14 +53,13 @@ class SuperAdminManager extends AdminManager {
       console.error(new Error(error));
       return {
         success: false,
-        message: `Error getting admin dashboard: ${error.message}`,
+        message: `Error getting super admin dashboard: ${error.message}`,
       };
     }
   }
 
   async changeAdminRights(email, updatedRights) {
     try {
-      // Validate input data
       if (!email || typeof updatedRights.isAdmin !== 'boolean') {
         return {
           success: false,
@@ -32,11 +67,10 @@ class SuperAdminManager extends AdminManager {
         };
       }
 
-      // Find user by email and update the isAdmin field
       const user = await User.findOneAndUpdate(
         { email },
         { isAdmin: updatedRights.isAdmin },
-        { new: true }  // Return the updated document
+        { new: true }
       );
 
       if (!user) {
@@ -61,4 +95,4 @@ class SuperAdminManager extends AdminManager {
   }
 }
 
-module.exports = SuperAdminManager;
+export default SuperAdminManager;
